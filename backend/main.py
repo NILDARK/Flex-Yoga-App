@@ -5,9 +5,10 @@ from sqlalchemy.exc import IntegrityError
 from datetime import datetime,timedelta
 from dateutil.relativedelta import *
 from flask_cors import CORS
-
+import os
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yoga-class.db'  # Use SQLite for simplicity
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yoga-class.db'  # Use SQLite for simplicity
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.environ["RENDER_MOUNT_POINT"]}/yoga-class.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 CORS(app)
