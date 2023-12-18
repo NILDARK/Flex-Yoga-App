@@ -2,9 +2,8 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import '../styles/NewAdmission.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap-icons/font/bootstrap-icons.css'; // Include Bootstrap Icons CSS
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import infosvg from '../assets/info.svg';
+
 const NewAdmission = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -147,7 +146,7 @@ const NewAdmission = () => {
 
   return (
     <div className="container mt-5">
-      <div className="card p-4">
+      <div className="card p-4 ">
       <h2 className="text-center mb-4">New Admission</h2>
       {termsAgreed?(<>
       <form onSubmit={handleSubmit} className="px-30">
@@ -155,12 +154,12 @@ const NewAdmission = () => {
             <label htmlFor="username">
               Username <span className="text-danger">*</span>:
               <span
-                className="ml-1"
+                className="ml-4"
                 data-toggle="tooltip"
                 data-placement="right"
                 title="Username must be of length 6-24."
               >
-                ℹ️
+                <img src={infosvg} style={{height:"16px",width:"16px",marginLeft:"4px"}}alt="ℹ️" />
               </span>
             </label>
             <input
@@ -182,7 +181,7 @@ const NewAdmission = () => {
                 data-placement="right"
                 title="Password must be 8-16 characters long."
               >
-                ℹ️
+                <img src={infosvg} style={{height:"16px",width:"16px",marginLeft:"4px"}}alt="ℹ️" />
               </span>
             </label>
             <input
@@ -204,7 +203,7 @@ const NewAdmission = () => {
                 data-placement="right"
                 title="Confirm Password must match above password."
               >
-                ℹ️
+                <img src={infosvg} style={{height:"16px",width:"16px",marginLeft:"4px"}}alt="ℹ️" />
               </span>
             </label>
             <input
@@ -226,7 +225,7 @@ const NewAdmission = () => {
                 data-placement="right"
                 title="Enter your name."
               >
-                ℹ️
+                <img src={infosvg} style={{height:"16px",width:"16px",marginLeft:"4px"}}alt="ℹ️" />
               </span>
             </label>
             <input
@@ -248,7 +247,7 @@ const NewAdmission = () => {
                 data-placement="right"
                 title="Age should be integer. Allowed age is between 18-65."
               >
-                ℹ️
+                <img src={infosvg} style={{height:"16px",width:"16px",marginLeft:"4px"}}alt="ℹ️" />
               </span>
             </label>
             <input
@@ -270,7 +269,7 @@ const NewAdmission = () => {
                 data-placement="right"
                 title="Enter your phone number. Should only contain 10 digits without country code."
               >
-                ℹ️
+                <img src={infosvg} style={{height:"16px",width:"16px",marginLeft:"4px"}}alt="ℹ️" />
               </span>
             </label>
             <input
@@ -292,7 +291,7 @@ const NewAdmission = () => {
                 data-placement="right"
                 title="Select batch for yoga class."
               >
-                ℹ️
+                <img src={infosvg} style={{height:"16px",width:"16px",marginLeft:"4px"}}alt="ℹ️" />
               </span>
             </label>
             <select
@@ -312,7 +311,7 @@ const NewAdmission = () => {
             )}
           </div>
 
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-around">
               <button type="submit" className="btn btn-secondary mr-2" onClick={() => setEnrollAndPayLater(true)}>
                 Enroll and Pay Later
               </button>
@@ -322,7 +321,7 @@ const NewAdmission = () => {
               <button type="button" className="btn btn-secondary" onClick={() => navigate('/')}>
                 Back to Home
               </button>
-            </div>
+          </div>
         </form>
       </>):(<>
       <div className="terms-container jumbotron">
