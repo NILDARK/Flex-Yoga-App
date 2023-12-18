@@ -55,14 +55,22 @@ const ExistingAdmission = () => {
         <div>
           <p>{loggedUser}! You are logged in!</p>
           {isActive ? (
-            <div className="row">
-              <div className="col-md-6 jumbotron">
-                <BatchChange userName={loggedUser} />
-              </div>
-              <div className="col-md-6 jumbotron">
-                <PaymentPage userName={loggedUser} />
-              </div>
+            // <div className="row">
+            //   <div className="col-md-6 jumbotron">
+            //     <BatchChange userName={loggedUser} />
+            //   </div>
+            //   <div className="col-md-6 jumbotron">
+            //     <PaymentPage userName={loggedUser} />
+            //   </div>
+            // </div>
+            <div className="parent-div">
+            <div className="child-div">
+              <BatchChange userName={loggedUser} />
             </div>
+            <div className="child-div">
+              <PaymentPage userName={loggedUser} />
+            </div>
+          </div>
           ) : (
             <p style={{ color: 'red' }}>Your yoga classes are temporarily suspended due to fee dues for previous months, contact administrator for lifting suspension.</p>
           )}

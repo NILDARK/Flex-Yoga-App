@@ -64,7 +64,7 @@ const BatchChange = ({ userName }) => {
   };
 
   return (
-    <div className="mt-4">
+    <div className="jumbotron mt-4">
       <h3>Batch Change Request</h3>
       <p>Current Batch: {currentBatch}</p>
       <form onSubmit={handleSubmit}>
