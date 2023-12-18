@@ -10,7 +10,7 @@ const BatchChange = ({ userName }) => {
   useEffect(() => {
     const fetchMostRecentBatch = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/get-current-batch?username=${userName}`);        if (response.status === 200) {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/get-current-batch?username=${userName}`);        if (response.status === 200) {
           const data = await response.json();
           setCurrentBatchId(`${data.current_batch}` || '');
           setCurrentBatch(`${data.batch}` || '');
@@ -43,7 +43,7 @@ const BatchChange = ({ userName }) => {
       return;
     }
     try {
-      const response = await fetch('http://localhost:5000/batch-change', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/batch-change`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

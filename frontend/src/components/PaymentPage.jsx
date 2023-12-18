@@ -16,7 +16,7 @@ const PaymentPage = ({ userName }) => {
     try {
       setLoading(true);
 
-      const response = await fetch('http://localhost:5000/complete-payment', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/complete-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const PaymentPage = ({ userName }) => {
 
   const getCurrentPaymentStatus = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/get-payment-status?username=${userName}`);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/get-payment-status?username=${userName}`);
       if (response.status === 200) {
         const data = await response.json();
         setCurrentPaymentStatus(data.due_status || false);

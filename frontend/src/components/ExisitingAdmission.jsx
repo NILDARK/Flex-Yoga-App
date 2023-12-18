@@ -3,7 +3,8 @@ import { Link, Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import BatchChange from './BatchChange';
 import PaymentPage from './PaymentPage';
-import '../styles/ExisitingAdmission.css'
+import '../styles/ExisitingAdmission.css';
+
 const ExistingAdmission = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [loggedUser,setLoggedUser] = useState("");
@@ -25,7 +26,7 @@ const ExistingAdmission = () => {
       return;
     }
     try {
-      const response = await fetch(`http://localhost:5000/get-active-status?username=${loggedUser}`);        if (response.status === 200) {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/get-active-status?username=${loggedUser}`);        if (response.status === 200) {
         const data = await response.json();
         setIsActive(data.is_active||false)
       } else {

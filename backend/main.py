@@ -9,17 +9,18 @@ import os
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 CORS(app)
 # Define User model
 class User(db.Model):
     username = db.Column(db.String(50), primary_key=True)
-    password = db.Column(db.String(50))
-    name = db.Column(db.String(100))
+    password = db.Column(db.String(1000))
+    name = db.Column(db.String(10000))
     age = db.Column(db.Integer, db.CheckConstraint('age >= 18 AND age <= 65'))
     contact = db.Column(db.String(20))
-    joined_date = db.Column(db.DateTime,default=datetime.now())
+    joined_date = db.Column(db.DateTime,default=lambda:datetime.now())
     is_active = db.Column(db.Boolean,default=True)
 
 # Define Batches model
@@ -31,19 +32,26 @@ class Batches(db.Model):
 class BatchChangeRequest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), db.ForeignKey('user.username'))
-    requested_time = db.Column(db.DateTime,default=datetime.now()+relativedelta(months=+1))  # You may want to use a proper date type here
+    requested_time = db.Column(db.DateTime,default=lambda:datetime.now()+relativedelta(months=+1))  # You may want to use a proper date type here
     batch_id = db.Column(db.Integer, db.ForeignKey('batches.batch_id'))
 
 # Define PaymentHistory model
 class PaymentHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), db.ForeignKey('user.username'))
-    time_of_payment = db.Column(db.DateTime,default=datetime.now())  # Adjust as per your requirements
+    time_of_payment = db.Column(db.DateTime,default=lambda:datetime.now())  # Adjust as per your requirements
     amount = db.Column(db.Integer,default=500)
 
 # Create tables
 with app.app_context():
     db.create_all()
+    batch_1 = Batches(batch='6-7AM')
+    batch_2 = Batches(batch='7-8AM')
+    batch_3 = Batches(batch='8-9AM')
+    batch_4 = Batches(batch='5-6PM')
+
+    db.session.add_all([batch_1, batch_2, batch_3, batch_4])
+    db.session.commit()
 # Routes
 @app.route('/')
 def home():
@@ -74,12 +82,13 @@ def create_user():
     new_batch_change_request = BatchChangeRequest(username=username,batch_id=batch,requested_time=datetime.utcnow())
     try:
         db.session.add(new_user)
+        db.session.commit()
         db.session.add(new_batch_change_request)
         db.session.commit()
         return jsonify({'message': 'User created successfully'}), 201
-    except IntegrityError:
-        db.session.rollback()
-        return jsonify({'error': 'Username already exists'}), 400
+    # except IntegrityError:
+    #     db.session.rollback()
+    #     return jsonify({'error': 'Username already exists'}), 400
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': str(e)}), 500

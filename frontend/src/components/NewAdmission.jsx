@@ -21,7 +21,7 @@ const NewAdmission = () => {
   const [termsAgreed,setTermsAgreed] = useState(false);
   const completePayment = async () => {
     try {
-      const response = await fetch('http://localhost:5000/complete-payment', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/complete-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ const NewAdmission = () => {
   
     if (validateForm()) {
       try {
-        const response = await fetch('http://localhost:5000/create_user', {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/create_user`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -128,13 +128,13 @@ const NewAdmission = () => {
             console.log('Enroll and Pay Now');
             completePayment();
           }
-        } else if (response.status === 401) {
+        } else if (response.status === 400) {
           const data = await response.json();
           console.error('User already exists:');
           setErrors({ ...errors, username: 'User already exists' });
         } else {
           const data = await response.json();
-          console.error('Error creating user:', data.message || 'Unknown error');
+          console.error('Error creating user:', data.error || 'Unknown error');
         }
       } catch (error) {
         console.error('Error during user creation:', error);
