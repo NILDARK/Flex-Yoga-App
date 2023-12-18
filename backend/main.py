@@ -7,8 +7,8 @@ from dateutil.relativedelta import *
 from flask_cors import CORS
 import os
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yoga-class.db'  # Use SQLite for simplicity
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.environ["RENDER_MOUNT_POINT"]}/yoga-class.db'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 CORS(app)
@@ -42,8 +42,7 @@ class PaymentHistory(db.Model):
     amount = db.Column(db.Integer,default=500)
 
 # Create tables
-with app.app_context():
-    db.create_all()
+db.create_all()
 # Routes
 @app.route('/')
 def home():
