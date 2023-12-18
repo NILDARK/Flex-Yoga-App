@@ -27,6 +27,7 @@ const PaymentPage = ({ userName }) => {
       if (response.status === 200) {
         getCurrentPaymentStatus();
         setPaymentError("");
+        console.log(`Payment submitted successfully for ${userName}.`);
       } else {
         const data = await response.json();
         setPaymentError(data.error || 'Unknown Error! Failed Payment.');
@@ -36,8 +37,7 @@ const PaymentPage = ({ userName }) => {
     } finally {
       setLoading(false);
     }
-
-    console.log(`Payment submitted successfully for ${userName}.`);
+    
   };
 
   const getCurrentPaymentStatus = async () => {
