@@ -42,7 +42,8 @@ class PaymentHistory(db.Model):
     amount = db.Column(db.Integer,default=500)
 
 # Create tables
-db.create_all()
+with app.app_context():
+    db.create_all()
 # Routes
 @app.route('/')
 def home():
