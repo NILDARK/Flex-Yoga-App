@@ -22,7 +22,7 @@ The frontend serves as a user interface, allowing individuals to seamlessly enro
 ### Technologies
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 ### Visual Web Design
-![User Flow](./visual_user_flow.png)
+![User Flow](./Docs/images/visual_user_flow.png)
 
 ### Installation for frontend
 
@@ -61,7 +61,7 @@ The backend serves as the API server for the Flex Yoga Class Admission Portal. I
 
 #### Entity Relationship (ER) Diagram
 
-![ER Diagram](./ER_Diagram.svg)
+![ER Diagram](./Docs/images/ER_Diagram.svg)
 
 #### Tables
 
@@ -369,3 +369,14 @@ docker run -p 5173:5173 --env-file .env frontend
 - Backend: [Flex Yoga App API](https://flex-yoga-app.onrender.com/)
 
 **Note**: There might be an issue with the initial request when from frontend. If you encounter any problems, please try making multiple requests, and it should work smoothly.
+
+## Demo GIFs
+
+Below are visual demonstrations of key functionalities within the Flex Yoga Admission Portal.
+###  Creating a User
+
+![Create User](./Docs/gifs/CreateUser.gif)
+
+### Logging In, Paying Dues, Making batch change request, persisting user data on reload
+
+![Login](./Docs/gifs/UserLogin.gif)
