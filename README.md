@@ -1,5 +1,32 @@
 # Flex Yoga Class Admission Portal
 
+1. [Overview](#overview)
+2. [Assumptions while Solving the Problem Statement](#assumptions-while-solving-the-problem-statement)
+3. [Essential Features](#essential-features)
+4. [Salient Features](#salient-features)
+5. [Approach](#approach)
+   1. [Backend](#backend)
+   2. [Frontend](#frontend)
+6. [Technologies Used](#technologies-used)
+7. [Project Structure](#project-structure)
+   1. [Frontend](#1-frontend)
+      1. [Overview](#overview-1)
+      2. [Technologies](#technologies-1)
+      3. [Visual Web Design](#visual-web-design)
+      4. [Installation for frontend](#installation-for-frontend)
+   2. [Backend](#2-backend)
+      1. [Overview](#overview-2)
+      2. [Technologies](#technologies-2)
+      3. [Database Design](#database-design)
+      4. [API Endpoints](#api-endpoints)
+      5. [Installation for backend](#installation-for-backend)
+   3. [Containerization](#containerization)
+      1. [Docker Compose](#docker-compose)
+      2. [Individual Containers](#individual-containers)
+6. [Live Links](#live-links)
+7. [Demo GIFs](#demo-gifs)
+8. [Contributor](#contributor)
+
 ## Overview
 Welcome to the Flex Yoga Class Admission Portal! This application serves as an admission form for monthly yoga classes, allowing users to enroll in different batches, make monthly payments, and manage their class preferences. The portal is designed to be user-friendly, adhering to specific requirements such as age limitations, monthly payments, and batch preferences.
 

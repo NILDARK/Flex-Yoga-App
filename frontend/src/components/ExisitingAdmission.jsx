@@ -58,7 +58,11 @@ const ExistingAdmission = () => {
       <h2 className="text-center mb-4">Existing Admission</h2>
       {isLoggedIn ? (
         <div>
-          <p>{loggedUser}! You are logged in!</p>
+          <div className='flex-container'>
+            <p>{loggedUser}! You are logged in!</p>
+            <button className="btn btn-secondary" onClick={handleLogout}>Logout</button>
+          </div>
+
           {isActive ? (
             <div className="content-container">
               <div className="batch-change-container">
@@ -71,7 +75,7 @@ const ExistingAdmission = () => {
           ) : (
             <p className="error-message">Your yoga classes are temporarily suspended due to fee dues for previous months, contact administrator for lifting suspension.</p>
           )}
-          <button className="btn btn-secondary" onClick={handleLogout}>Logout</button>
+
         </div>
       ) : (
         <div className="row">
