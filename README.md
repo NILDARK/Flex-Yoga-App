@@ -24,7 +24,7 @@ Welcome to the Flex Yoga Class Admission Portal! This application serves as an a
 
 6. **Fixed Fees:**
    - Fees for a month is fixed and is INR 500/-
-   
+
 ### Essential Features
 
 1. **Admission Form and Sign Up:**
@@ -56,6 +56,63 @@ Welcome to the Flex Yoga Class Admission Portal! This application serves as an a
 
 4. **Hashing and Salt:**
     - System uses hashing and adding salt method to store user creds into database as a best practiced security protocol
+Certainly! Below is the updated "Approach" section with the equation for calculating fee dues:
+
+## Approach
+
+### Backend:
+
+#### Requirements Analysis:
+
+The first step involved a comprehensive analysis of the requirements:
+
+1. **Unique Identifier (Username):** As enrollment is a key aspect, a unique identifier (username) was deemed essential.
+   
+2. **Authentication and Login Functionality:** Payment functionalities necessitated user authentication, leading to the implementation of a login system.
+
+3. **Timestamps for User Creation:** To calculate payment dues, a timestamp was stored for each user creation.
+
+4. **Active Flag:** An "active" flag was introduced to indicate whether a participant's enrollment is currently suspended or active.
+
+5. **Timestamps for Payment Records:** Timestamps were stored for every payment, facilitating the determination of fee due status.
+
+6. **Batch Change Request Timestamps:** For efficient batch change functionality, timestamps were logged for batch change requests, with an additional timestamp representing the date of the month for which the batch needs to be changed.
+
+#### Implementation Details:
+
+- **Unique Identifier (Username) Requirement:** Implemented a unique username as the primary key for user records.
+  
+- **Authentication:** Authentication was achieved through a secure login system.
+  
+- **Timestamps Management:** The necessary timestamps for user creation, payment records, and batch change requests were efficiently managed to ensure accurate calculations.
+
+- **Batch Change Logic:** Determining the current month's batch involved querying the last batch change request's batch ID with a timestamp strictly less than the current timestamp.
+
+- **Fee Due Calculation:** Calculating total fee dues was accomplished using the equation:
+
+  ```plaintext
+  diff = (current_year - last_payment_year) * 12 + current_month - last_payment_month
+  total_due_amount = diff * monthly_fees
+  ```
+
+- **Batch Change Request on First Enrollment:** A batch change request was automatically triggered during the user's first enrollment, guaranteeing the existence of at least one record for the user.
+
+### Frontend:
+
+The frontend development followed a straightforward approach aligned with the problem statement:
+
+#### Component Structure:
+
+- **Admission Page:** Implemented an admission form page to gather required participant details.
+  
+- **Existing Page:** Created a page featuring a login form, batch change component, and payment component.
+
+#### Logic and State Management:
+
+- **Conditional Component Rendering:** To avoid unnecessary routing and prop passing, components were conditionally rendered based on the user's login status.
+
+- **Use of Loading Flags and States:** Employed loading flags and states to prevent unnecessary form submissions while processing requests.
+
 ## Technologies Used
 - Frontend: ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 - Backend: ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
@@ -437,5 +494,4 @@ Below are visual demonstrations of key functionalities within the Flex Yoga Admi
 ## Contributor
 
 [NILDARK](https://github.com/NILDARK)
-[nilaykumarpatel86@gmail.com](nilaykumarpatel86@gmail.com)
-[nilu.patel2002@gmail.com](nilu.patel2002@gmail.com)
+    - Email: [nilaykumarpatel86@gmail.com](nilaykumarpatel86@gmail.com), [nilu.patel2002@gmail.com](nilu.patel2002@gmail.com)
