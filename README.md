@@ -28,24 +28,24 @@ The frontend serves as a user interface, allowing individuals to seamlessly enro
 
 To run the frontend locally, follow these steps:
 
-    1. Create an `.env` file in the `frontend` directory.
+1. Create an `.env` file in the `frontend` directory.
 
-        ```env
-        # .env
-        VITE_API_BASE_URL="http://localhost:5000"
-        ```
+    ```env
+    # .env
+    VITE_API_BASE_URL="http://localhost:5000"
+    ```
 
-    2. Run the following command:
+2. Run the following command:
 
-        ```bash
-        npm install
-        ```
+    ```bash
+    npm install
+    ```
 
-    3. Start the development server:
+3. Start the development server:
 
-        ```bash
-        npm run dev
-        ```
+    ```bash
+    npm run dev
+    ```
 
 Now, the frontend will be accessible at [http://localhost:5173](http://localhost:5173).
 
@@ -281,26 +281,26 @@ The backend serves as the API server for the Flex Yoga Class Admission Portal. I
 
 To run the backend locally, follow these steps:
 
-    1. Create an `.env` file in the `backend` directory.
+1. Create an `.env` file in the `backend` directory.
 
-        ```env
-        # .env
-        DATABASE_URL="postgresql://user:password@localhost:5432/yoga_class"
-        ```
+    ```env
+    # .env
+    DATABASE_URL="postgresql://user:password@localhost:5432/yoga_class"
+    ```
 
     Replace `user` and `password` with your PostgreSQL credentials.
 
-    2. Run the following commands:
+2. Run the following commands:
 
-        ```bash
-        pip install -r requirements.txt
-        ```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-    3. Start the backend server:
+3. Start the backend server:
 
-        ```bash
-        python flex-yoga-app.wsgi
-        ```
+    ```bash
+    python flex-yoga-app.wsgi
+    ```
 
 Now, the backend will be accessible at [http://localhost:5000](http://localhost:5000).
 
@@ -375,7 +375,7 @@ docker run -p 5173:5173 --env-file .env frontend
 Below are visual demonstrations of key functionalities within the Flex Yoga Admission Portal.
 ###  Creating a User
 
-![Create User](./Docs/gifs/CreateUser.gif)
+![Create User](./Docs/gifs/CreatingUser.gif)
 
 ### Logging In, Paying Dues, Making batch change request, persisting user data on reload
 
