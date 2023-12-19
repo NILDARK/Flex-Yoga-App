@@ -22,8 +22,9 @@ Welcome to the Flex Yoga Class Admission Portal! This application serves as an a
 5. **Payment Simulations:**
    - Payments made by participants are considered dummy transactions for simulation purposes.
 
-6. **Fixed Fees:**
+6. **Fixed Monthly Fees & Fixed no. of batches:**
    - Fees for a month is fixed and is INR 500/-
+   - There are only four batches as described in the problem statement. 
 
 ### Essential Features
 

@@ -66,7 +66,7 @@ const PaymentPage = ({ userName }) => {
       {currentPaymentStatus ? (
         <>
           <p>Total Due Fee Amount till Current Month:{fetching?'Fetching if any dues...':'INR '+dueAmount+'/-'}</p>
-          <button className="btn btn-primary" onClick={handlePayment} disabled={loading}>
+          <button className="btn btn-primary" onClick={handlePayment} disabled={loading || !dueAmount}>
             {loading ? 'Processing...' : 'Pay Now'}
           </button>
           {paymentError && <p className="mt-2" style={{ color: 'red' }}>{paymentError}</p>}
