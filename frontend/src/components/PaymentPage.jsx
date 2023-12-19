@@ -5,6 +5,7 @@ const PaymentPage = ({ userName }) => {
   const [dueAmount, setDueAmount] = useState(0);
   const [paymentError, setPaymentError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [fetching, setFetching] = useState(false);
 
   const handlePayment = async () => {
     const confirmPayment = window.confirm('Are you sure you want to proceed with the payment?');
@@ -40,6 +41,7 @@ const PaymentPage = ({ userName }) => {
 
   const getCurrentPaymentStatus = async () => {
     try {
+      setFetching(true);
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/get-payment-status?username=${userName}`);
       if (response.status === 200) {
         const data = await response.json();
@@ -49,19 +51,21 @@ const PaymentPage = ({ userName }) => {
         const data = await response.json();
       }
     } catch (error) {
+    }finally{
+      setFetching(false);
     }
   };
 
   useEffect(() => {
     getCurrentPaymentStatus();
-  }, [userName]); // useEffect will re-run when userName changes
+  }, [userName]);
 
   return (
     <div className="jumbotron mt-4">
       <h3>Payment Request</h3>
       {currentPaymentStatus ? (
         <>
-          <p>Total Due Fee Amount till Current Month: &#8377; {dueAmount}</p>
+          <p>Total Due Fee Amount till Current Month:{fetching?'Fetching if any dues...':'INR '+dueAmount+'/-'}</p>
           <button className="btn btn-primary" onClick={handlePayment} disabled={loading}>
             {loading ? 'Processing...' : 'Pay Now'}
           </button>

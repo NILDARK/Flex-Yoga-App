@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -8,6 +8,7 @@ const Login = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
   const handleLogin = async () => {
     try {
       setLoading(true);
@@ -19,15 +20,14 @@ const Login = ({ onLogin }) => {
         body: JSON.stringify({ "username":username, "password":password }),
       });
 
-      if (response.status===200) {
-        onLogin({username}); // Call the onLogin function passed as a prop
+      if (response.status === 200) {
+        onLogin({ username });
       } else {
         const data = await response.json();
         setError(data.message || 'Invalid Credentials');
       }
     } catch (error) {
-      console.error('Error during login:', error);
-    }finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -53,13 +53,13 @@ const Login = ({ onLogin }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <div className='button-container'>
-      <button className="btn btn-primary" onClick={handleLogin} disabled={loading}>
-      {loading ? 'Logging in...' : 'Login'}
-      </button>
-      <button className="btn btn-secondary" onClick={()=>{navigate('/')}}>
-        Back to Home
-      </button>
+      <div className="button-container">
+        <button className="btn btn-primary" onClick={handleLogin} disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
+        <button className="btn btn-secondary" disabled={loading} onClick={() => navigate('/')}>
+          Back to Home
+        </button>
       </div>
       {error && <p className="mt-2" style={{ color: 'red' }}>{error}</p>}
     </div>

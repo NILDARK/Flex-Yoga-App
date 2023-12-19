@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Login from './Login';
 import BatchChange from './BatchChange';
 import PaymentPage from './PaymentPage';
-import '../styles/ExisitingAdmission.css';
+import '../styles/ExistingAdmission.css';
 
 const ExistingAdmission = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [loggedUser,setLoggedUser] = useState("");
-  const [isActive,setIsActive] = useState(true);
+  const [loggedUser, setLoggedUser] = useState('');
+  const [isActive, setIsActive] = useState(true);
+
   useEffect(() => {
     const storedUser = localStorage.getItem('loggedInUser');
     if (storedUser) {
@@ -16,19 +17,23 @@ const ExistingAdmission = () => {
       setLoggedUser(storedUser);
     }
   }, []);
-  const handleLogin = ({username}) => {
+
+  const handleLogin = ({ username }) => {
     setLoggedUser(username);
     setLoggedIn(true);
     localStorage.setItem('loggedInUser', username);
   };
+
   const getActiveStatus = async () => {
-    if(loggedUser===""){
+    if (loggedUser === '') {
       return;
     }
+
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/get-active-status?username=${loggedUser}`);        if (response.status === 200) {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/get-active-status?username=${loggedUser}`);
+      if (response.status === 200) {
         const data = await response.json();
-        setIsActive(data.is_active||false)
+        setIsActive(data.is_active || false);
       } else {
         const data = await response.json();
         console.error('Error fetching active status:', data.error || 'Unknown error');
@@ -36,15 +41,15 @@ const ExistingAdmission = () => {
     } catch (error) {
       console.error('Error during fetch:', error);
     }
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getActiveStatus();
-  },[loggedUser]);
+  }, [loggedUser]);
 
   const handleLogout = () => {
     setLoggedIn(false);
-    setLoggedUser("");
+    setLoggedUser('');
     localStorage.removeItem('loggedInUser');
   };
 
