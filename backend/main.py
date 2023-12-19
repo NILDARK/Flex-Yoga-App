@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
-CORS(app)
+CORS(app,resources={r"/*": {"origins": ["https://flex-yoga-admission-portal.netlify.app"]}})
 # Define User model
 class User(db.Model):
     username = db.Column(db.String(50), primary_key=True)
