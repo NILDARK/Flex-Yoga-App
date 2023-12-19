@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend  
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    networks:
+      - yoga_app_network
+
+  frontend:
+    build:
+      context: ./frontend  
+    ports:
+      - "5173:5173"
+    env_file:
+      - .env
+    networks:
+      - yoga_app_network
+
+networks:
+  yoga_app_network:

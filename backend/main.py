@@ -12,7 +12,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
-CORS(app,resources={r"/*": {"origins": ["https://flex-yoga-admission-portal.netlify.app"]}})
+CORS(app)
+
 # Define User model
 class User(db.Model):
     username = db.Column(db.String(50), primary_key=True)
@@ -211,4 +212,4 @@ def update_user_activity(username):
         return False
     return True
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
