@@ -6,19 +6,9 @@ import ExistingAdmission from './components/ExisitingAdmission';
 import NewAdmission from './components/NewAdmission';
 import BatchChange from './components/BatchChange';
 import PaymentPage from './components/PaymentPage';
+import NotFound from './components/NotFound';
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  // const handleLogin = () => {
-  //   // Simplified login logic, set to true for demonstration purposes
-  //   setIsLoggedIn(true);
-  // };
-
-  // const handleLogout = () => {
-  //   // Simplified logout logic, set to false for demonstration purposes
-  //   setIsLoggedIn(false);
-  // };
 
   return (
     <BrowserRouter>
@@ -28,7 +18,7 @@ function App() {
           <Route path="/new-admission" element={<NewAdmission />} />
         <Route path="/batch-change" element={<BatchChange/>} />
         <Route path="/payment" element={<PaymentPage/>} />
-      
+        <Route path="*" element={<NotFound/>} />
         </Routes>
     </BrowserRouter>
   );
