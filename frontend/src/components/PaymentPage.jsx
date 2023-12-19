@@ -27,13 +27,11 @@ const PaymentPage = ({ userName }) => {
       if (response.status === 200) {
         getCurrentPaymentStatus();
         setPaymentError("");
-        console.log(`Payment submitted successfully for ${userName}.`);
       } else {
         const data = await response.json();
         setPaymentError(data.error || 'Unknown Error! Failed Payment.');
       }
     } catch (error) {
-      console.error('Error during login:', error);
     } finally {
       setLoading(false);
     }
@@ -49,10 +47,8 @@ const PaymentPage = ({ userName }) => {
         setDueAmount(data.amount || 0);
       } else {
         const data = await response.json();
-        console.error('Error fetching most recent batch:', data.error || 'Unknown error');
       }
     } catch (error) {
-      console.error('Error during fetch:', error);
     }
   };
 

@@ -5,9 +5,12 @@ const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
   const handleLogin = async () => {
     try {
+      setLoading(true);
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/login`, {
         method: 'POST',
         headers: {
@@ -24,6 +27,8 @@ const Login = ({ onLogin }) => {
       }
     } catch (error) {
       console.error('Error during login:', error);
+    }finally {
+      setLoading(false);
     }
   };
 
@@ -49,8 +54,8 @@ const Login = ({ onLogin }) => {
         />
       </div>
       <div className='button-container'>
-      <button className="btn btn-primary" onClick={handleLogin}>
-        Login
+      <button className="btn btn-primary" onClick={handleLogin} disabled={loading}>
+      {loading ? 'Logging in...' : 'Login'}
       </button>
       <button className="btn btn-secondary" onClick={()=>{navigate('/')}}>
         Back to Home

@@ -3,6 +3,59 @@
 ## Overview
 Welcome to the Flex Yoga Class Admission Portal! This application serves as an admission form for monthly yoga classes, allowing users to enroll in different batches, make monthly payments, and manage their class preferences. The portal is designed to be user-friendly, adhering to specific requirements such as age limitations, monthly payments, and batch preferences.
 
+### Assumptions while Solving the Problem Statement
+
+1. **Payment Basis:**
+   - Participants cannot pay fees in advance; fees must be paid on a month-to-month basis.
+
+2. **Fee Dues and Class Suspension:**
+   - If a participant misses paying fees for the current month, their classes for the next month will be suspended.
+   - To resume classes, participants need to contact the Flex Yoga Class administrator.
+   - Only fee dues for the current month are allowed.
+
+3. **Batch Change Restrictions:**
+   - Participants cannot change their batch for the current month or any month except the next month.
+
+4. **Geographical Region:**
+   - Participants are assumed to belong to the Indian geographical region.
+
+5. **Payment Simulations:**
+   - Payments made by participants are considered dummy transactions for simulation purposes.
+
+6. **Fixed Fees:**
+   - Fees for a month is fixed and is INR 500/-
+   
+### Essential Features
+
+1. **Admission Form and Sign Up:**
+   - Participants can fill up the admission form and sign up.
+   - Two enrollment options: "Enroll & Pay Later" and "Enroll & Pay."
+   - All form fields are validated. 
+2. **Age Group Validation:**
+   - Participants' admission is allowed only if they belong to the valid age group of 18-65.
+
+3. **Login/Logout Functionality:**
+   - Participants can log in and log out using the credentials used during admission.
+
+4. **Batch Change Request:**
+   - Participants can initiate a batch change request for the next month.
+
+5. **Fee Payment:**
+   - Participants can pay fee dues for the current month if any.
+
+### Salient Features
+
+1. **View Current Month Yoga Batch:**
+   - Participants can view their assigned yoga batch for the current month.
+
+2. **Payment of Due Payments:**
+   - Participants can pay all due payments in case of suspension, provided it's allowed by the administrator.
+
+3. **User Data Retention:**
+   - User data will be retained once logged in until the participant logs out.
+
+4. **Hashing and Salt:**
+    - System uses hashing and adding salt method to store user creds into database as a best practiced security protocol
 ## Technologies Used
 - Frontend: ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 - Backend: ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
@@ -380,3 +433,9 @@ Below are visual demonstrations of key functionalities within the Flex Yoga Admi
 ### Logging In, Paying Dues, Making batch change request, persisting user data on reload
 
 ![Login](./Docs/gifs/UserLogin.gif)
+
+## Contributor
+
+[NILDARK](https://github.com/NILDARK)
+[nilaykumarpatel86@gmail.com](nilaykumarpatel86@gmail.com)
+[nilu.patel2002@gmail.com](nilu.patel2002@gmail.com)
